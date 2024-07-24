@@ -1,13 +1,11 @@
-from flask import Flask, jsonify,render_template
-from tabela import lista_users
-#Routes
-#funções
-#Template
+from flask import Flask, render_template
+
 app = Flask(__name__)
 
 @app.route('/')
 def inicial():
-    return render_template('inicial.html')
+    usuarios = {'nome':'Gabriel'}
+    return render_template('inicial.html', usuarios=usuarios)
 
 @app.route('/2')
 def tabela():
@@ -17,6 +15,5 @@ def tabela():
 def usuarios(name_users):
     return render_template('name_users.html', name_users=name_users)
 
-# Run the Flask application
 if __name__ == '__main__':
     app.run(debug=True)
