@@ -1,1 +1,0 @@
-lista_users={'names':['gabriel','Lucas'],'quantidade':['1']}
