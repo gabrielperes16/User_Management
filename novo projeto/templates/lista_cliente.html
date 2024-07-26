@@ -1,0 +1,20 @@
+<table>
+  <tr>
+      <th> Nomes </th>
+      <th> Data </th>
+      <th> Quantidade </th>
+  </tr>
+  {% for cliente in clientes %}
+      <tr>
+          <td scope="row">{{ cliente.id }}</td>
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.data }}</td>
+          <td>{{ cliente.quantidade }}</td>
+          <td>
+            <button class="btn btn-primary">Editar</button>
+            <button class="btn btn-danger">Deletar</button>
+            <button class="btn btn-danger">Calcular</button>
+          </td>
+      </tr>
+  {% endfor %}
+</table>
