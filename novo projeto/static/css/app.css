@@ -1,42 +1,60 @@
+/* Custom Button Styles */
 .btn-custom-green {
-    background-color: #7EEF92;
-    color: black;
-    border: none;
-  }
-  .btn-custom-green:hover {
-    background-color: #6edb80;
-    color: black;
-  }
-  .btn-custom-green:active {
-    background-color: #5eca6e;
-    color: black;
-  }
-  .btn-danger {
-    color: black;
-  }
-  body {
-    background-color: rgb(127, 178, 255);
-  }
-  table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
-  table {
-    font-family: Arial, sans-serif;
-    width: 97%;
-    margin-left: 30px;
-    margin-right: 20px;
-    margin-top: 50px;
-    background-color: #dddddd;
-  }
-  td, th {
-    text-align: left;
-    padding: 8px;
-  }
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-  h1 {
-    text-align: center;
-    margin-top: 30px;
-  }
+  background-color: #7EEF92;
+  color: black;
+  border: none;
+}
+
+.btn-custom-green:hover {
+  background-color: #6edb80;
+  color: black;
+}
+
+.btn-custom-green:active {
+  background-color: #5eca6e;
+  color: black;
+}
+
+.btn-danger {
+  color: black;
+}
+
+/* Body Background Color */
+body {
+  background-color: rgb(127, 178, 255);
+}
+
+/* Table Styles */
+table {
+  font-family: Arial, sans-serif;
+  width: 100%;
+  margin-top: 50px;
+  background-color: #dddddd;
+  border: 1px solid black;
+  border-radius: 20px;
+  border-collapse: separate;
+  border-spacing: 0; 
+  overflow: hidden; 
+}
+
+th, td {
+  border: 1px solid black; /* Black border for cells */
+  padding: 8px;
+}
+
+td, th {
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+/* Heading Styles */
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+/* Ensuring table corners are visible with rounded corners */
