@@ -1,49 +1,77 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request
 from database.cliente import CLIENTES
 
 cliente_route = Blueprint('cliente', __name__)
 
-# Documentation ⭳
-"""
-Rotas Clientes
-
-    - /clientes/ (GET) - Listar os clientes
-    - /clientes/ (POST) - Inserir um novo cliente
-    - /clientes/new (GET) - Formulário para novo cliente
-    - /clientes/<int:cliente_id> (GET) - Obter os dados de um cliente
-    - /clientes/<int:cliente_id>/edit (GET) - Renderizar um formulário para editar
-    - /clientes/<int:cliente_id>/update (PUT) - Atualizar os dados do cliente
-    - /clientes/<int:cliente_id>/delete (DELETE) - Deletar o cliente
-"""
-
 @cliente_route.route('/')
 def lista_clientes():
-    return render_template('lista_cliente.html', clientes=CLIENTES)
+    """ listar os clientes """
+    return render_template('lista_clientes.html', clientes=CLIENTES)
+    
 
 @cliente_route.route('/', methods=['POST'])
-def inserir_clientes():
-    print(request.json)
-    return('ok')
+def inserir_cliente():
+    """ inserir os dados do cliente """
+    
+    data = request.json
+    
+    novo_usuario = {
+        "id": len(CLIENTES) + 1,
+        "nome": data['nome'],
+        "data": data['data'],
+        "quantidade": data['quantidade'],
+    }
+    
+    CLIENTES.append(novo_usuario)
+    return render_template('item_cliente.html', cliente=novo_usuario)
+    
+
 @cliente_route.route('/new')
 def form_cliente():
-    return render_template('form_edit_cliente.html')
+    """ formulario para cadastrar um cliente """
+    return render_template('form_cliente.html')
+    
 
 @cliente_route.route('/<int:cliente_id>')
-def detalhe_clientes(cliente_id):
-    # Logic to get client details
-    return render_template('detalhe_cliente.html', cliente_id=cliente_id)
+def detalhe_cliente(cliente_id):
+    """ exibir detalhes do cliente """
+    
+    cliente = list(filter(lambda c: c['id'] == cliente_id, CLIENTES))[0]
+    return render_template('detalhe_cliente.html', cliente=cliente)
+    
 
 @cliente_route.route('/<int:cliente_id>/edit')
 def form_edit_cliente(cliente_id):
-    # Logic to get client details for editing
-    return render_template('form_edit_cliente.html', cliente_id=cliente_id)
+    """ formulario para editar um cliente """
+    cliente = None
+    for c in CLIENTES:
+        if c['id'] == cliente_id:
+            cliente = c
+    
+    return render_template('form_cliente.html', cliente=cliente)
 
 @cliente_route.route('/<int:cliente_id>/update', methods=['PUT'])
-def atualizar_clientes(cliente_id):
-    # Logic to update client details
-    return redirect(url_for('cliente.detalhe_clientes', cliente_id=cliente_id))
+def atualizar_cliente(cliente_id):
+    """ atualizar informacoes do cliente """
+    cliente_editado = None
+    # obter dados do formulario de edicao
+    data = request.json
+    
+    # obter usuario pelo id
+    for c in CLIENTES:
+        if c['id'] == cliente_id:
+            c['nome'] = data['nome']
+            c['data'] = data['data']
+            c["quantidade"]= data['quantidade']
+            
+            cliente_editado = c
+            
+    # editar usuario
+    return render_template('item_cliente.html', cliente=cliente_editado)
+    
 
 @cliente_route.route('/<int:cliente_id>/delete', methods=['DELETE'])
-def deletar_clientes(cliente_id):
-    # Logic to delete client
-    return redirect(url_for('cliente.lista_clientes'))
+def deletar_cliente(cliente_id):   
+    global CLIENTES
+    CLIENTES = [ c for c in CLIENTES if c['id'] != cliente_id ]
+    return {'deleted': 'ok'}

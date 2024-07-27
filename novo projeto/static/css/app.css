@@ -35,6 +35,7 @@ table {
   border-collapse: separate;
   border-spacing: 0; 
   overflow: hidden; 
+  margin-bottom: 100px;
 }
 
 th, td {
