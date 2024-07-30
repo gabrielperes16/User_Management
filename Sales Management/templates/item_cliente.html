@@ -1,15 +1,15 @@
 <tr id="cliente-{{cliente.id}}">
     <th scope="row">{{ cliente.id }}</th>
     <td>{{ cliente.nome }}</td>
-    <td>{{ cliente.email }}</td>
-    <td>{{ cliente.data_registro }}</td>
+    <td>{{ cliente.telefone }}</td>
+    <td>{{ cliente.dia}}</td>
     <td>{{ cliente.quantidade }}</td>
     <td>
-        <button class="btn btn-secondary" 
+        <button class="btn btn-success" 
             c-get="{{ url_for('cliente.detalhe_cliente', cliente_id=cliente.id) }}"
             c-target="#exibir-cliente"
             data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Ver
+                Calcular
         </button>
 
         <button class="btn btn-primary" 

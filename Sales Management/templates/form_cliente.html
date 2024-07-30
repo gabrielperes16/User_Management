@@ -17,24 +17,26 @@
    
     <div class="mb-3">
       <label class="form-label">Nome</label>
-      <input type="text" class="form-control" name="nome" {% if cliente%}value="{{cliente.nome}}"{% endif %}>
+      <input type="text" class="form-control" name="nome" {% if cliente%}value="{{cliente.nome}}"{% endif %} required=''>
     </div>
 
     <div class="mb-3">
-        <label id="label-target" class="form-label">Email</label>
-        <input type="text" class="form-control" name="email" {% if cliente%}value="{{cliente.email}}"{% endif %}>
+        <label class="form-label" for="telefone">Telefone</label>
+        <input type="tel" class="form-control" id="telefone" name="telefone" >
+        
     </div>
-    <div class="mb-3">
-        <label class="form-label" for="data_registro">Data de Registro</label>
-        <input type="date" class="form-control" id="data_registro" name="data_registro" 
-            {% if cliente %}value="{{ cliente.data_registro.strftime('%Y-%m-%d') }}"{% endif %}>
-    </div>
+
     <div class="mb-3">
         <label class="form-label" for="quantidade">Quantidade</label>
         <input type="number" class="form-control" id="quantidade" name="quantidade" 
+            {% if cliente %}value="{{ cliente.quantidade }}"{% endif %} required min="0" step="1">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="dia ">Data</label>
+        <input type="date" class="form-control" id="dia" name="dia" 
             {% if cliente %}value="{{ cliente.quantidade }}"{% endif %} min="0" step="1">
     </div>
-
+    
     <button type="submit" class="btn btn-primary">
         {% if cliente %}Salvar{% else %}Criar{% endif %}
     </button>

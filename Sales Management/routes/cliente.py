@@ -1,7 +1,9 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request,jsonify,abort
 from database.cliente import CLIENTES
+from datetime import datetime
 
 cliente_route = Blueprint('cliente', __name__)
+
 
 @cliente_route.route('/')
 def lista_clientes():
@@ -14,15 +16,16 @@ def inserir_cliente():
     """ inserir os dados do cliente """
     
     data = request.json
+    for cliente in CLIENTES:
+        dia=datetime.now
     
     novo_usuario = {
         "id": len(CLIENTES) + 1,
         "nome": data['nome'],
-        "data_registro": data['data_registro'],
-        "email": data['email'],
+        "telefone": data['telefone'],
         "quantidade": data['quantidade'],
-
-    }
+        "dia": data['dia'],
+}
     
     CLIENTES.append(novo_usuario)
     
@@ -35,13 +38,7 @@ def form_cliente():
     return render_template('form_cliente.html')
     
 
-@cliente_route.route('/<int:cliente_id>')
-def detalhe_cliente(cliente_id):
-    """ exibir detalhes do cliente """
-    
-    cliente = list(filter(lambda c: c['id'] == cliente_id, CLIENTES))[0]
-    return render_template('detalhe_cliente.html', cliente=cliente)
-    
+
 
 @cliente_route.route('/<int:cliente_id>/edit')
 def form_edit_cliente(cliente_id):
@@ -64,13 +61,29 @@ def atualizar_cliente(cliente_id):
     for c in CLIENTES:
         if c['id'] == cliente_id:
             c['nome'] = data['nome']
-            c['email'] = data['email']
-            
+            c['telefone'] = data['telefone']
+            c['dia'] = data['dia']
+            c['quantidade'] = data['quantidade']
             cliente_editado = c
-            
-    # editar usuario
+
     return render_template('item_cliente.html', cliente=cliente_editado)
+
+@cliente_route.route('/<int:cliente_id>')
+
+def detalhe_cliente(cliente_id):
+    for cliente in CLIENTES:
+        if cliente["id"] == cliente_id:
+            try:
+                quantidade = int(cliente["quantidade"])  # Converte a quantidade para float
+                calculo = quantidade * 7
+                resultado = f'O resultado de {quantidade} X 7 = {calculo:.2f}'
+                contexto = f'O Cliente {cliente["nome"]} Comprou '
+                return f'{contexto}{resultado}'
+            except ValueError:
+                abort(400, description="Quantidade inválida")  # Retorna erro 400 se a conversão falhar
     
+    abort(404)  # Retorna erro 404 se o cliente não for encontrado
+
 
 @cliente_route.route('/<int:cliente_id>/delete', methods=['DELETE'])
 def deletar_cliente(cliente_id):   
