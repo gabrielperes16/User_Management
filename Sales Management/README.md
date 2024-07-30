@@ -1,8 +1,8 @@
 # gestao-usuarios
 
-Projeto de gestão de usuários usando Python e Flask no canal youtube.com/@programadorpython
+Projeto de gestão de usuários usando Python e Flask 
 
-### install
+### 
 ```
 $ pip install -r requirements.txt
 ```
