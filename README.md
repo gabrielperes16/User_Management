@@ -1,4 +1,4 @@
-User management project using Python and Flask
+Sales Management project using Python and Flask
 
 Tools: Blueprint/CRUD/Bootstrap/Cru.js
 
