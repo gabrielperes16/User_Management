@@ -1,13 +1,9 @@
-# gestao-usuarios
+User management project using Python and Flask
 
-Projeto de gestão de usuários usando Python e Flask 
+Tools: Blueprint/CRUD/Bootstrap/Cru.js
 
-### 
-```
-$ pip install -r requirements.txt
-```
+SGBD: Postgresl
 
-### run
-```
-$ python main.py
-```
+Languages: Python, javascript, html and css
+
+Framework: flask.
