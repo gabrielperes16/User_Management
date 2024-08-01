@@ -76,8 +76,8 @@ def detalhe_cliente(cliente_id):
             try:
                 quantidade = int(cliente["quantidade"])  # Converte a quantidade para float
                 calculo = quantidade * 7
-                resultado = f'O resultado de {quantidade} X 7 = {calculo:.2f}'
-                contexto = f'O Cliente {cliente["nome"]} Comprou '
+                resultado = f' <strong>{quantidade} X 7 = {calculo:.2f}</strong>'
+                contexto = f'O Cliente <strong>{cliente["nome"]}</strong> Comprou <strong>{cliente["quantidade"]}</strong> Garrafas'
                 return f'{contexto}{resultado}'
             except ValueError:
                 abort(400, description="Quantidade inválida")  # Retorna erro 400 se a conversão falhar
