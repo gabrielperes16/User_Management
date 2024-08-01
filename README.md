@@ -1,6 +1,6 @@
 Sales Management project using Python and Flask
 
-Tools: Blueprint/CRUD/Bootstrap/Cru.js
+Tools: Bootstrap/Cru.js
 
 SGBD: Postgresl
 
