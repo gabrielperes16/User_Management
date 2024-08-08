@@ -5,6 +5,11 @@
     <td>{{ cliente.dia}}</td>
     <td>{{ cliente.quantidade }}</td>
     <td>
+        <button class="btn_register" 
+            c-delete="{{ url_for('cliente.deletar_cliente', cliente_id=cliente.id) }}"
+            c-remove-closest="tr">
+                Registros
+        </button>
         <button class="btn btn-success" 
             c-get="{{ url_for('cliente.detalhe_cliente', cliente_id=cliente.id) }}"
             c-target="#exibir-cliente"

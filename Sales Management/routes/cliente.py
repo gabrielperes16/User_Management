@@ -90,3 +90,4 @@ def deletar_cliente(cliente_id):
     global CLIENTES
     CLIENTES = [ c for c in CLIENTES if c['id'] != cliente_id ]
     return {'deleted': 'ok'}
+

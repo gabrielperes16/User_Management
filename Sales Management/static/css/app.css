@@ -29,7 +29,15 @@ td {
   /* Black border for cells */
   padding: 8px;
 }
-
+.btn_register{
+  background-color: rgb(21, 55, 167);
+  color: white;
+  border: 1px solid black;
+  width: 120px;
+  height: 40px;
+  border-radius: 10px;
+  
+}
 td,
 th {
   text-align: left;
