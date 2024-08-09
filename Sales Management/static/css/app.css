@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Playfair+Display:wght@500&display=swap');
 body {
-  background: linear-gradient(to right, #629fdb, #6adaff, #aeebff);
+  background:linear-gradient(#0a93a5,#00e1ff,#34e7ff) no-repeat;
   border-radius: 5px;
 }
 
@@ -9,7 +10,6 @@ body {
   font-weight: bolder;
   font-size: 18px;
 }
-
 table {
   font-family: Arial, sans-serif;
   width: 100%;
@@ -30,7 +30,7 @@ td {
   padding: 8px;
 }
 .btn_register{
-  background-color: rgb(21, 55, 167);
+  background-color: rgb(18, 120, 138);
   color: white;
   border: 1px solid black;
   width: 120px;
@@ -38,6 +38,7 @@ td {
   border-radius: 10px;
   
 }
+
 td,
 th {
   text-align: left;
@@ -56,7 +57,21 @@ tr:nth-child(even) {
 
 
 .typed-text {
-  text-align: center;
-  margin-top: 40px;
+  font-family: "Playfair Display", serif;
+  margin-top: 60px;
   margin-bottom: 40px;
+  color: rgb(0, 0, 0);
+  font-size: 50px;
+  align-items: center;
+  text-align: center;
+}
+
+.register_sales{
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  
+  
 }

@@ -5,11 +5,17 @@
     <td>{{ cliente.dia}}</td>
     <td>{{ cliente.quantidade }}</td>
     <td>
-        <button class="btn_register" 
-            c-delete="{{ url_for('cliente.deletar_cliente', cliente_id=cliente.id) }}"
-            c-remove-closest="tr">
+        <button class="btn_register"
+        data-target="#exibir-cliente"
+        data-bs-toggle="modal" data-bs-target="#RegistroModal">
                 Registros
         </button>
+        <button class="register_sales" 
+        data-target="#exibir-cliente"
+        data-bs-toggle="modal" data-bs-target="#RegistroModal">
+                Registrar venda
+        </button>
+
         <button class="btn btn-success" 
             c-get="{{ url_for('cliente.detalhe_cliente', cliente_id=cliente.id) }}"
             c-target="#exibir-cliente"
