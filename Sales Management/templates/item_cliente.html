@@ -11,6 +11,7 @@
                 Registros
         </button>
         <button class="register_sales" 
+          c-get="{{ url_for('cliente.detalhe_cliente', cliente_id=cliente.id) }}"
         data-target="#exibir-cliente"
         data-bs-toggle="modal" data-bs-target="#RegistroModal">
                 Registrar venda

@@ -91,3 +91,5 @@ def deletar_cliente(cliente_id):
     CLIENTES = [ c for c in CLIENTES if c['id'] != cliente_id ]
     return {'deleted': 'ok'}
 
+def registros(cliente_id):
+    pass
