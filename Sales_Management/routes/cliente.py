@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request,jsonify,abort
-from database.cliente import CLIENTES
+from database.cliente import INFO_CLIENTE
 from datetime import datetime
 
 cliente_route = Blueprint('cliente', __name__)
@@ -8,7 +8,7 @@ cliente_route = Blueprint('cliente', __name__)
 @cliente_route.route('/')
 def lista_clientes():
     """ listar os clientes """
-    return render_template('lista_clientes.html', clientes=CLIENTES)
+    return render_template('lista_clientes.html', clientes=INFO_CLIENTE)
     
 
 @cliente_route.route('/', methods=['POST'])
@@ -16,18 +16,18 @@ def inserir_cliente():
     """ inserir os dados do cliente """
     
     data = request.json
-    for cliente in CLIENTES:
+    for cliente in INFO_CLIENTE:
         dia=datetime.now
     
     novo_usuario = {
-        "id": len(CLIENTES) + 1,
+        "id": len(INFO_CLIENTE) + 1,
         "nome": data['nome'],
         "telefone": data['telefone'],
         "quantidade": data['quantidade'],
         "dia": data['dia'],
 }
     
-    CLIENTES.append(novo_usuario)
+    INFO_CLIENTE.append(novo_usuario)
     
     return render_template('item_cliente.html', cliente=novo_usuario)
     
@@ -44,7 +44,7 @@ def form_cliente():
 def form_edit_cliente(cliente_id):
     """ formulario para editar um cliente """
     cliente = None
-    for c in CLIENTES:
+    for c in INFO_CLIENTE:
         if c['id'] == cliente_id:
             cliente = c
     
@@ -58,7 +58,7 @@ def atualizar_cliente(cliente_id):
     data = request.json
     
     # obter usuario pelo id
-    for c in CLIENTES:
+    for c in INFO_CLIENTE:
         if c['id'] == cliente_id:
             c['nome'] = data['nome']
             c['telefone'] = data['telefone']
@@ -71,7 +71,7 @@ def atualizar_cliente(cliente_id):
 @cliente_route.route('/<int:cliente_id>')
 
 def detalhe_cliente(cliente_id):
-    for cliente in CLIENTES:
+    for cliente in INFO_CLIENTE:
         if cliente["id"] == cliente_id:
             try:
                 quantidade = int(cliente["quantidade"])  # Converte a quantidade para float
@@ -87,8 +87,8 @@ def detalhe_cliente(cliente_id):
 
 @cliente_route.route('/<int:cliente_id>/delete', methods=['DELETE'])
 def deletar_cliente(cliente_id):   
-    global CLIENTES
-    CLIENTES = [ c for c in CLIENTES if c['id'] != cliente_id ]
+    global INFO_CLIENTE
+    INFO_CLIENTE = [ c for c in INFO_CLIENTE if c['id'] != cliente_id ]
     return {'deleted': 'ok'}
 
 def registros(cliente_id):
