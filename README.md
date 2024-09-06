@@ -6,4 +6,4 @@ SGBD: MySQL
 
 Languages: Python, javascript, html and css
 
-Framework: flask
+Framework: flask.
